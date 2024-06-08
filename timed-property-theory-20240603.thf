@@ -1,0 +1,282 @@
+% These are meant to be axioms and theorems for a formal theory of libertarian property values.
+% I tend to think in terms of elements of set, subsets, etc.
+% Translating into logic can sometimes be clumsy, but keep in mind:
+% V is a subset of U iff for all v in V, v is in U
+% iff for all individuals v, v in V => v in U
+
+% Declare type for time
+thf(time_type, type, time: $i > $o).
+thf(exist_time, axiom, ? [T: $i] : time(T)).
+
+% Define the before relation and its properties
+thf(before_type, type, before: $i > $i > $o).
+thf(time_ordering, axiom, 
+    ![T1: $i, T2: $i] : (before(T1, T2) => (time(T1) & time(T2)))).
+
+% Axiom: Time is a strict total order
+thf(time_strict_total_order, axiom, 
+    ![T1: $i, T2: $i, T3: $i] : (
+        (time(T1) & time(T2) & time(T3)) => 
+        ((before(T1, T1) => $false) &                    % Irreflexivity
+         ((before(T1, T2) & before(T2, T3)) => before(T1, T3)) & % Transitivity
+         ((before(T1, T2) | before(T2, T1) | (T1 = T2))) % Totality
+    ))).
+
+% Declare types for objects, persons, and actions
+thf(object_type, type, object: $i > $i > $i > $o).
+thf(person_type, type, person: $i > $i > $i > $o).
+thf(non_person_object_type, type, np_obj: $i > $i > $i > $o).
+
+thf(object_declaration_implies_time_ordering, axiom,
+	![X:$i, T1:$i, T2:$i]: (object(X,T1,T2) => before(T1,T2))).
+
+% Declare that objects, persons, and actions exist with time intervals
+thf(exist_objects, axiom, ? [X: $i, T1: $i, T2: $i] : (object(X, T1, T2) & before(T1, T2))).
+thf(exist_person, axiom, ? [X: $i, T1: $i, T2: $i] : (person(X, T1, T2) & before(T1, T2))).
+%thf(exist_persons, axiom, ! [X: $i, T1: $i, T2: $i] : (person(X, T1, T2) => ?[Y: $i] : (person(Y, T1, T2) & (X != Y)))).
+
+
+% Persons are a subset of objects
+thf(persons_are_objects, axiom, ! [X: $i, T1: $i, T2: $i] : (person(X, T1, T2) => object(X, T1, T2))).
+
+
+%Non-person objects are objects, but not persons
+% We declare this for convenience
+thf(non_person_obj_def, axiom, ! [X: $i, T1: $i, T2: $i] : (np_obj(X, T1, T2) <=> (object(X, T1, T2) & ~person(X,T1,T2)))). 
+
+% There exist non-person objects
+thf(exist_non_person_objects, axiom, ? [X: $i, T1: $i, T2: $i] : (np_obj(X, T1, T2) & before(T1, T2))).
+
+
+% Action relation 
+% Actions involve a subject, object, indirect object, action label and times
+% We need this type to include transitive actions such as giving permission
+thf(action_type, type, act: $i > $i > $i >$i> $i > $i > $o).
+thf(action_tag_type, type, action_tag: $i > $i > $i > $o).
+thf(action_relation, axiom, 
+    ! [P: $i, O: $i, IO:$i, A: $i, T1: $i, T2: $i] : (act(P, O, IO, A, T1, T2) => (person(P, T1, T2) & object(O, T1, T2) & object(IO,T1,T2) & action_tag(A,T1,T2) & before(T1, T2)))).
+
+% The action axiom - that persons always act in some way
+% Note that because of the type of action, persons act/exist as and to themselves
+% Actually this is a consequence of ownernship
+thf(action_axiom, axiom, 
+    ! [P: $i, T1: $i, T2: $i] : (person(P, T1, T2) => (?[A: $i]: act(P,P,P,A,T1,T2)))).
+
+%There is a part of every action which is reflexive
+thf(any_action_is_reflexive_action_axiom, axiom, 
+    ! [P: $i, O:$i, IO:$i, A:$i, T1: $i, T2: $i] : 
+		(act(P,O,IO,A,T1,T2) => ?[B:$i] : (act(P,P,P,B,T1,T2)))).
+
+
+% Existence of ownership
+% Note that because ownership is an action it requires an indirect object as a part of its type
+% One interpretation of this is that a person owns a thing - as opposed to other people
+thf(owns_type, type, owns: $i > $i > $i > $i > $i > $i > $o).
+thf(ownership_relation, axiom, 
+    ! [P1: $i, O: $i, P2:$i, H:$i, T1: $i, T2: $i] : (owns(P1, O, P2, H, T1, T2) => (person(P1, T1, T2) & object(O, T1, T2) & person(P2,T1,T2) & act(P1,O,P2,H,T1,T2) & before(T1, T2)))).
+
+
+% Disownership
+% Note that one can only disown non-person objects, though that is a consequence of self-ownership and anti-slavery
+thf(disowns_type, type, disowns: $i > $i > $i > $i > $i > $i > $o).
+thf(disownership_relation, axiom, 
+    ! [P1: $i, O: $i, P2:$i, D: $i, T1: $i, T2: $i] : (disowns(P1, O, P2, D, T1,T2) => (person(P1, T1, T2) & person(P2, T1, T2) & np_obj(O, T1, T2) & act(P1,O,P2,D,T1,T2) & ?[T3:$i, H:$i]: ~owns(P1,O,P2,H,T2,T3)))).
+
+
+% Axiom of self-ownership
+thf(self_ownership_axiom, axiom, 
+    ! [P: $i, P2:$i, T1: $i, T2: $i] : (person(P, T1, T2) => ?[H:$i] : (owns(P, P, P2, H, T1, T2)))).
+
+% Material use is an action
+% Note that material use, because of the type, invovles a person using a thing to themselves
+thf(use_type, type, use: $i > $i > $i > $i > $i > $i > $o).
+thf(use_is_action, axiom, 
+    ! [P: $i, O: $i, U: $i, T1: $i, T2: $i] : (
+	use(P, O, P, U, T1, T2) => (
+		person(P, T1, T2) & object(O, T1, T2) & act(P,O,P,U,T1,T2) & before(T1, T2)
+	)
+    )
+).
+
+
+
+
+% Deontic Logic Axioms
+
+
+% Higher-order declaration for modal operators
+thf(obligation_type, type, ob: ($i > $o) > $o).
+thf(permission_type, type, permit: ($i > $o) > $o).
+thf(forbidden_type, type, forbid: ($i > $o) > $o).
+
+% Axiom: If an action is obligatory, then it is permitted
+thf(axiom_obligation_implies_permission, axiom,
+    ! [P: $i, O: $i, IO:$i, A: $i, T1: $i, T2: $i] : (ob(^ [X: $i] : act(P, O, IO, A, T1, T2)) => permit(^ [X: $i] : act(P, O, IO, A, T1, T2)))).
+
+% Axiom: If an action is permitted, then it is not obligatory that its negation holds
+thf(axiom_permission_implies_not_obligation_of_negation, axiom,
+    ! [P: $i, O: $i, IO:$i, A: $i, T1: $i, T2: $i] : (permit(^ [X: $i] : act(P, O, IO, A, T1, T2)) => ~ ob(^ [X: $i] : ~ act(P, O, IO, A, T1, T2)))).
+
+% Axiom: If an action is obligatory, then it is not permitted to not do it (O implies not P not)
+thf(axiom_obligation_implies_not_permission_of_negation, axiom,
+    ![P: $i, O: $i, IO:$i, A: $i, T1: $i, T2: $i] : (ob(^ [X: $i] : act(P, O, IO, A, T1, T2)) => ~ permit(^ [X: $i] : ~ act(P, O, IO, A, T1, T2)))).
+
+% Axiom: Deontic consistency (you cannot have both permission to do something and obligation not to do it)
+thf(axiom_deontic_consistency, axiom,
+    ![P: $i, O: $i, IO:$i, A: $i, T1: $i, T2: $i] : ~(permit(^ [X: $i] : act(P, O, IO, A, T1, T2)) & ob(^ [X: $i] : ~ act(P, O, IO, A, T1, T2)))).
+
+
+%Definition of forbidden for convenience
+% Axiom: An action is forbidden iff it is obligatory not to do it
+thf(axiom_not_permitted_implies_forbidden, axiom,
+    ! [P: $i, O: $i, IO:$i, A: $i, T1: $i, T2: $i] : (forbid(^ [X: $i] : act(P, O, IO, A, T1, T2)) <=> ob(^ [X: $i] : ~act(P, O, IO, A, T1, T2)))).
+
+
+
+
+% Axiom obligation of self-ownership
+thf(self_ownership_ob_axiom, axiom, 
+    ! [P: $i, P2:$i, T1: $i, T2: $i] : ((person(P, T1, T2)) => ?[H:$i] : (ob(^ [X:$i] : owns(P, P, P2, H, T1, T2))))).
+
+
+% Axiom of use of unowned property
+thf(axiom_unowned_use, axiom,
+    ![P: $i, O: $i, U: $i, T1: $i, T2: $i] : ((np_obj(O, T1, T2) & person(P, T1, T2) & ~?[P1: $i,H:$i] : owns(P1, O, P, H, T1, T2)) => permit(^ [X: $i] : use(P, O, P, U, T1, T2)))).
+
+
+% Axiom: Anti-slavery axiom
+thf(axiom_antislavery, axiom,
+    ![P1: $i, P2: $i, P:$i, H:$i, T1: $i, T2: $i] : ((person(P1, T1, T2) & person(P2, T1, T2) & (P1 != P2)) => ~(permit(^ [X: $i] : owns(P1, P2, P, H, T1, T2))))).
+
+
+
+% Claim type
+% By "claim" we mean "claim to own" -- i.e. it is a claim made about an object to others
+thf(claim_type, type, claim: $i > $i > $i> $i > $i > $i > $o).
+
+thf(axiom_claim_is_action, axiom,
+   ![P: $i, O: $i, P2:$i, C:$i, T1: $i, T2: $i] : (
+	claim(P,O,P2,C,T1,T2) => (
+		act(P,O,P2,C,T1,T2)))).
+
+% Axiom: Homesteading - claiming unowned objects
+thf(axiom_claim_unowned, axiom,
+    ![P: $i, O: $i, P2:$i, U: $i, C:$i, H:$i, T1: $i, T2: $i, T3: $i] : ((use(P, O, P,U, T1, T2) & ~?[P1: $i] : (owns(P1, O, P, H, T1, T2) & (P1 != P))) => permit(^ [X: $i] : claim(P, O, P2,C, T2, T3)))).
+
+
+%Ownership is equivalent to a claim and permission to claim
+thf(axiom_ownership_implies_claim_and_permission_to_claim, axiom,
+	![P1: $i, O: $i, P2:$i, H:$i, C:$i, T1: $i, T2: $i] : (
+		owns(P1,O,P2,H, T1,T2) <=> (
+			claim(P1,O,P2,C,T1,T2) & permit(^ [X: $i]: claim(P1,O,P2,C,T1,T2))
+		)
+	)
+).
+
+
+% Declaration for give-permission operator
+thf(give_permission_type, type, allow: $i > $i > $i > $i > $i > $i > $o).
+
+thf(axiom_allow_assumptions, axiom,
+	![P1: $i, P2: $i, O: $i, H:$i, U: $i, T1: $i, T2: $i] : (
+	allow(P1, O, P2, U, T1, T2) => (
+		owns(P1,O,P2,H,T1,T2) & person(P2,T1,T2) & ?[A:$i] : act(P1,O,P2,A,T1,T2)
+	))
+).
+
+% A use is permitted if all owners agree
+thf(axiom_owners_allow_use_def, axiom,
+	![P2: $i, O: $i, H:$i, U: $i, T1: $i, T2: $i] : (
+	(![P:$i]: (owns(P,O,P2,H,T1,T2) => allow(P, O, P2, U, T1, T2) ))=> (
+		permit(^ [X:$i] : use(P2,O,P2,U,T1,T2)  )
+	))
+).
+
+
+% Declaration for ask-permission operator
+thf(ask_permission_type, type, ask: $i > $i > $i > $i > $i > $i > $o).
+
+thf(axiom_ask_def, axiom,
+	![P1: $i, P2: $i, O: $i, H:$i, U: $i, T1: $i, T2: $i] : (
+	ask(P2, O, P1, U, T1, T2) => (
+		owns(P1,O,P2,H,T1,T2) & person(P2,T1,T2) & ?[A:$i] : act(P2,O,P1,A,T1,T2)
+	))
+).
+
+
+
+% Axiom: Permission for one use is not the same as permission for all use
+thf(restricted_use_permission, axiom,
+    ![P1: $i, P2: $i, O: $i, H:$i, U1: $i, U2: $i, T1: $i, T2: $i] :(
+	(person(P1, T1,T2) & person(P2, T1, T2) & (P1 != P2) & (U1 != U2) & owns(P1, O,P2,H,T1,T2) & allow(P1,O,P2,U1,T1,T2) & ~allow(P1,O,P2,U2,T1,T2)) =>
+	 permit( ^ [X:$i]: (use(P2,O,P2,U1,T1,T2)))
+   )
+).
+
+
+
+% Axiom: Obligation to ask to use owned objects
+thf(axiom_ask_permission, axiom,
+	![P1: $i, P2: $i, O: $i, H:$i, U: $i, T1: $i, T2: $i] : (
+		((P1 != P2) & owns(P1,O,P2,H,T1,T2) & permit(^ [X:$i] : use(P2,O,P2,U,T1,T2))) =>
+		(ob(^ [X:$i]: ask(P2,O,P1,U,T1,T2)) & allow(P1,O,P2,U,T1,T2))
+	)
+).
+
+
+%Definition of ownership transfer
+thf(voluntary_transfer_type, type, vol_trans: $i > $i > $i > $i > $o).
+
+thf(voluntary_transfer_definition, axiom,
+	![P1: $i, P2: $i, P:$i, O: $i, H:$i, T: $i] : ( vol_trans(P1,O,P2,T) =>
+		(?[T1:$i] : (owns(P1,O,P,H,T1,T)) &
+		?[T2:$i] : (disowns(P1,O,P,H,T,T2) & owns(P2,O,P,H,T,T2)))
+	)
+).
+
+
+
+% Axiom: Non-Aggression Principle
+thf(nap, axiom, 
+    ![P1: $i, P2: $i, O: $i, H:$i, U: $i, T1: $i, T2: $i] : (
+		((P1 != P2) & owns(P1, O, P2, H, T1, T2) & ~allow(P1, O,P2, U, T1, T2)) => 
+    			~ permit(^ [X: $i] : use(P2, O, P2, U, T1, T2))
+)).
+
+
+% Axiom: Total ownership implies any use is allowed
+thf(total_ownership_implies_any_use_or_act, axiom,
+	![P: $i, P1:$i, O: $i, A: $i, U:$i, H:$i, T1: $i, T2: $i] : (
+		(owns(P,O,P1,H,T1,T2) & ![P2:$i] : ( (P !=P2) => ~owns(P2,O,P,H,T1,T2)))=> (
+			permit(^ [X: $i] : use(P, O, P,U, T1, T2)) 
+			& permit(^ [X: $i] : act(P, O, P,A, T1, T2))
+		)
+	)
+).
+
+
+% Not allowed implies not permitted
+thf(no_permission_axiom, axiom, 
+    ![P1: $i, P2: $i, O: $i, A: $i, T1: $i, T2: $i, H:$i] : ((before(T1, T2) & person(P1, T1, T2) & person(P2, T1, T2) & (P1 != P2) & object(O, T1, T2) & owns(P1, O, P2, H, T1, T2) & ~allow(P1, O, P2, A, T1, T2)) => ~permit(^ [X: $i] : (use(P2, O, P2, A, T1, T2))))).
+
+
+% Axiom: Property Abandonment
+thf(abandon_property, axiom,
+    ![P1: $i, P2:$i, O: $i, H:$i, D:$i, T1: $i, T2: $i, T3: $i] : ((before(T1,T2) & before(T2,T3) & owns(P1, O,P2, H, T1, T2) & (P1 != O)) => permit(^ [X: $i] : disowns(P1, O,P2, D,T2, T3)))).
+
+
+% Dual ownership impossible conjecture -- no proof found
+thf(dual_ownership_impossible, conjecture, 
+    ![P1: $i, P2: $i, O: $i, H:$i, T1: $i, T2: $i] : (
+	(np_obj(O,T1,T2) & (P1 != P2) & owns(P1, O, P2, H, T1, T2) & owns(P2, O, P1, H, T1, T2)) => 
+     		$false
+    )
+).	
+
+% Dual ownership possible conjecture
+%thf(dual_ownership_possible, conjecture, 
+%    ![P1: $i, P2: $i, O: $i, H:$i, T1: $i, T2: $i] : (
+%	(np_obj(O,T1,T2) & (P1 != P2)) => permit(^[X:$i]: (owns(P1, O, P2, H, T1, T2) & owns(P2, O, P1, H, T1, T2)
+%    )
+%))).	
+
