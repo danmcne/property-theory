@@ -1,0 +1,11 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(before_decl,type,before:tm>tm>$o). thf(owns_decl,type,owns:en>en>en>tm>$o).
+thf(disowns_decl,type,disowns:en>en>en>tm>$o). thf(vol_transfer_decl,type,vol_transfer:en>en>en>tm>$o).
+thf(reacquires_decl,type,reacquires:en>en>en>tm>tm>$o).
+thf(vol_transfer_disowns, axiom,
+  ![P1:en,P2:en,O:en,Q:en,T:tm]: ((vol_transfer(P1,P2,O,T)&owns(P1,O,Q,T)) => disowns(P1,O,Q,T))).
+thf(disown_extinguishes, axiom,
+  ![P:en,O:en,Q:en,T1:tm,T2:tm]: ((disowns(P,O,Q,T1)&before(T1,T2)&~reacquires(P,O,Q,T1,T2)) => ~owns(P,O,Q,T2))).
+thf(transfer_exclusive, conjecture,
+  ![P1:en,P2:en,O:en,Q:en,T:tm,T2:tm]:
+    ((vol_transfer(P1,P2,O,T)&owns(P1,O,Q,T)&before(T,T2)&~reacquires(P1,O,Q,T,T2)) => ~owns(P1,O,Q,T2))).

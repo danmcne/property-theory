@@ -1,0 +1,7 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o).
+thf(is_owner_decl,type,is_owner:en>en>tm>$o). thf(vol_transfer_decl,type,vol_transfer:en>en>en>tm>$o).
+thf(vol_transfer_typing, axiom,
+  ![P1:en,P2:en,O:en,T:tm]: (vol_transfer(P1,P2,O,T) => (is_owner(P1,O,T) & person(P2) & (P1!=P2) & np_obj(O)))).
+thf(nemo_dat, conjecture,
+  ![P1:en,P2:en,O:en,T:tm]: (vol_transfer(P1,P2,O,T) => is_owner(P1,O,T))).

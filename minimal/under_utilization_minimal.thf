@@ -1,0 +1,20 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(rivalrous_decl,type,rivalrous:en>$o).
+thf(use_decl,type,use:en>en>man>tm>$o). thf(excl_decl,type,excl:man>man>$o).
+thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o). thf(allows_decl,type,allows:en>en>en>tm>$o).
+thf(per_decl,type,per:$o>$o). thf(fbd_decl,type,fbd:$o>$o). thf(ob_decl,type,ob:$o>$o).
+thf(forbidden_def, axiom, ![Phi:$o]: (fbd(Phi) <=> ob(~Phi))).
+thf(per_consistency, axiom, ![Phi:$o]: (per(Phi) => ~ob(~Phi))).
+thf(liberty, axiom, ![Phi:$o]: (~fbd(Phi) => per(Phi))).
+thf(owner_use_permitted, axiom, ![P:en,O:en,M:man,T:tm]: (is_owner(P,O,T) => per(use(P,O,M,T)))).
+thf(nap, axiom, ![P:en,O:en,Q:en,M:man,T:tm]: ((owns(P,O,Q,T) & rivalrous(O) & ~allows(P,O,Q,T) & ~is_owner(Q,O,T)) => fbd(use(Q,O,M,T)))).
+thf(excl_factual, axiom, ![O:en,P1:en,P2:en,M1:man,M2:man,T:tm]: ((rivalrous(O) & excl(M1,M2)) => ~(use(P1,O,M1,T) & use(P2,O,M2,T)))).
+thf(wants_decl,type,wants:en>en>man>tm>$o).
+thf(unrealised_decl,type,unrealised:en>en>man>tm>$o).
+thf(unrealised_def, axiom, ![P:en,O:en,M:man,T:tm]: (unrealised(P,O,M,T) <=> (wants(P,O,M,T) & ~use(P,O,M,T)))).
+thf(under_utilization, conjecture,
+  ![A:en,B:en,O:en,M1:man,M2:man,T:tm]:
+    ((person(A)&person(B)&(A!=B)&np_obj(O)&rivalrous(O)&
+      is_owner(A,O,T)&is_owner(B,O,T)&excl(M1,M2)&wants(A,O,M1,T)&wants(B,O,M2,T)) =>
+     ( per(use(A,O,M1,T)) & per(use(B,O,M2,T)) &
+       (unrealised(A,O,M1,T) | unrealised(B,O,M2,T)) ))).

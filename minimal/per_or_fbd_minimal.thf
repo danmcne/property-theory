@@ -1,0 +1,4 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(use_decl,type,use:en>en>man>tm>$o). thf(per_decl,type,per:$o>$o). thf(fbd_decl,type,fbd:$o>$o).
+thf(liberty, axiom, ![Phi:$o]: (~fbd(Phi) => per(Phi))).
+thf(per_or_fbd, conjecture, ![P:en,O:en,M:man,T:tm]: (per(use(P,O,M,T)) | fbd(use(P,O,M,T)))).

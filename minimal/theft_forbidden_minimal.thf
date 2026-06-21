@@ -1,0 +1,11 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(np_obj_decl,type,np_obj:en>$o). thf(rivalrous_decl,type,rivalrous:en>$o).
+thf(use_decl,type,use:en>en>man>tm>$o). thf(owns_decl,type,owns:en>en>en>tm>$o).
+thf(is_owner_decl,type,is_owner:en>en>tm>$o). thf(allows_decl,type,allows:en>en>en>tm>$o).
+thf(fbd_decl,type,fbd:$o>$o).
+thf(nap, axiom,
+  ![P:en,O:en,Q:en,M:man,T:tm]:
+    ((owns(P,O,Q,T) & rivalrous(O) & ~allows(P,O,Q,T) & ~is_owner(Q,O,T)) => fbd(use(Q,O,M,T)))).
+thf(theft_forbidden, conjecture,
+  ![P:en,O:en,Q:en,M:man,T:tm]:
+    ((owns(P,O,Q,T) & np_obj(O) & rivalrous(O) & ~allows(P,O,Q,T) & ~is_owner(Q,O,T)) => fbd(use(Q,O,M,T)))).

@@ -1,0 +1,12 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(person_decl,type,person:en>$o). thf(use_decl,type,use:en>en>man>tm>$o).
+thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
+thf(allows_decl,type,allows:en>en>en>tm>$o). thf(fbd_decl,type,fbd:$o>$o).
+thf(person_protection_prereqs, theorem,
+  ![P:en,Q:en,T:tm]: ((person(P)&person(Q)&(P!=Q)) => (owns(P,P,Q,T) & ~is_owner(Q,P,T)))).
+thf(nap_person, theorem,
+  ![P:en,Q:en,M:man,T:tm]:
+    ((person(P)&person(Q)&(P!=Q)&owns(P,P,Q,T)&~allows(P,P,Q,T)&~is_owner(Q,P,T)) => fbd(use(Q,P,M,T)))).
+thf(bodily_integrity, conjecture,
+  ![P:en,Q:en,M:man,T:tm]:
+    ((person(P)&person(Q)&(P!=Q)&~allows(P,P,Q,T)) => fbd(use(Q,P,M,T)))).

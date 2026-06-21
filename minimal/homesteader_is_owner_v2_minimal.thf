@@ -1,0 +1,10 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(before_decl,type,before:tm>tm>$o). thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(use_decl,type,use:en>en>man>tm>$o). thf(claim_decl,type,claim:en>en>tm>$o). thf(unowned_decl,type,unowned:en>tm>$o). thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
+thf(exist_persons, axiom, ?[P1:en,P2:en]: (person(P1)&person(P2)&(P1!=P2))).
+thf(homesteading, axiom,
+  ![P:en,O:en,Q:en,M:man,T1:tm,T2:tm]:
+    ((person(P)&np_obj(O)&use(P,O,M,T1)&claim(P,O,T1)&unowned(O,T1)&before(T1,T2)&person(Q)&(P!=Q)) => owns(P,O,Q,T2))).
+thf(is_owner_def, axiom, ![P:en,O:en,T:tm]: (is_owner(P,O,T) <=> ?[Q:en]: owns(P,O,Q,T))).
+thf(homesteader_is_owner_v2, conjecture,
+  ![P:en,O:en,M:man,T1:tm,T2:tm]:
+    ((person(P)&np_obj(O)&use(P,O,M,T1)&claim(P,O,T1)&unowned(O,T1)&before(T1,T2)) => is_owner(P,O,T2))).
