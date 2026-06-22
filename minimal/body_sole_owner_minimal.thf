@@ -1,0 +1,7 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o).
+thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
+thf(entity_disjoint,axiom,![X:en]:~(person(X)&np_obj(X))).
+thf(owns_typing,axiom,![P:en,O:en,Q:en,T:tm]:(owns(P,O,Q,T)=>(person(P)&(np_obj(O)|(O=P))&person(Q)&(P!=Q)))).
+thf(is_owner_def,axiom,![P:en,O:en,T:tm]:(is_owner(P,O,T)<=> ?[Q:en]:owns(P,O,Q,T))).
+thf(body_sole_owner, conjecture, ![P:en,R:en,T:tm]:((person(P)&is_owner(R,P,T))=>(R=P))).

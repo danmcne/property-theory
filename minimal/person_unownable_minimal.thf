@@ -1,9 +1,9 @@
 thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
-thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o).
-thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
-thf(entity_disjoint, axiom, ![X:en]: ~(person(X) & np_obj(X))).
-thf(owns_typing, axiom,
-  ![P:en,O:en,Q:en,T:tm]: (owns(P,O,Q,T) => (person(P) & (np_obj(O) | (O=P)) & person(Q) & (P!=Q)))).
-thf(is_owner_def, axiom, ![P:en,O:en,T:tm]: (is_owner(P,O,T) <=> ?[Q:en]: owns(P,O,Q,T))).
-thf(person_unownable, conjecture,
-  ![O:en,Q:en,T:tm]: ((person(O) & person(Q) & (O!=Q)) => ~is_owner(Q,O,T))).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(owns_decl,type,owns:en>en>en>tm>$o).
+thf(is_owner_decl,type,is_owner:en>en>tm>$o).
+thf(entity_disjoint,axiom,![X:en]:~(person(X)&np_obj(X))).
+thf(owns_typing,axiom,![P:en,O:en,Q:en,T:tm]:(owns(P,O,Q,T)=>(person(P)&(np_obj(O)|(O=P))&person(Q)&(P!=Q)))).
+thf(is_owner_def,axiom,![P:en,O:en,T:tm]:(is_owner(P,O,T)<=> ?[Q:en]:owns(P,O,Q,T))).
+thf(self_ownership,axiom,![P:en,Q:en,T:tm]:((person(P)&person(Q)&(P!=Q))=>owns(P,P,Q,T))).
+thf(exist_persons,axiom,?[P1:en,P2:en]:(person(P1)&person(P2)&(P1!=P2))).
+thf(person_unownable, conjecture, ![P:en,Q:en,T:tm]:((person(P)&person(Q)&(P!=Q))=>~is_owner(Q,P,T))).

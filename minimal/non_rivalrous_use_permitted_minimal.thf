@@ -1,0 +1,5 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(rivalrous_decl,type,rivalrous:en>$o). thf(unowned_decl,type,unowned:en>tm>$o). thf(may_use_decl,type,may_use:en>en>man>tm>$o).
+thf(rivalrous_ownable, axiom, ![O:en,T:tm]: (~rivalrous(O) => unowned(O,T))).
+thf(unowned_use, axiom, ![P:en,O:en,M:man,T:tm]: ((person(P)&np_obj(O)&unowned(O,T)) => may_use(P,O,M,T))).
+thf(non_rivalrous_use_permitted, conjecture, ![Q:en,O:en,M:man,T:tm]: ((person(Q)&np_obj(O)&~rivalrous(O)) => may_use(Q,O,M,T))).

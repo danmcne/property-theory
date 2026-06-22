@@ -1,27 +1,32 @@
-# Verification log
+# Verification — v0.16
 
-Prover: **Leo-III v1.7.18** (Java 21). Each minimal file proved independently;
-`-t 70`. All return `SZS status Theorem`.
+Prover: Leo-III v1.7.18 (`java -jar leo3.jar FILE -t 70`). **28/28 theorems**
+return SZS status Theorem. Each `minimal/*.thf` is self-contained.
 
-| Theorem (minimal file) | Status | Time |
-|---|---|---|
-| bodily_integrity_minimal | Theorem | 4875 ms |
-| first_homesteader_exclusive_v2_minimal | Theorem | 2146 ms |
-| homesteader_is_owner_v2_minimal | Theorem | 2665 ms |
-| homesteader_may_use_v2_minimal | Theorem | 1665 ms |
-| homesteader_owns_v2_minimal | Theorem | 1783 ms |
-| joint_conflict_no_contradiction_minimal | Theorem | 3040 ms |
-| nap_person_minimal | Theorem | 1507 ms |
-| nemo_dat_minimal | Theorem | 1112 ms |
-| owns_not_unowned_minimal | Theorem | 1248 ms |
-| per_or_fbd_minimal | Theorem | 1262 ms |
-| persistence_from_homestead_minimal | Theorem | 3624 ms |
-| person_protection_prereqs_minimal | Theorem | 1740 ms |
-| person_unownable_minimal | Theorem | 1644 ms |
-| theft_forbidden_minimal | Theorem | 1290 ms |
-| theft_retains_ownership_minimal | Theorem | 1127 ms |
-| transfer_exclusive_minimal | Theorem | 1379 ms |
-| under_utilization_minimal | Theorem | 2396 ms |
-| voluntary_slavery_impossible_minimal | Theorem | 1064 ms |
+**All axioms are model-checked.** The full axiom set (including the new
+`abandons_def`) has a finite Z3 model — see CONSISTENCY.md. Every theorem's
+antecedent is also checked satisfiable, so no theorem is vacuously true.
 
-Main file `libertarian-property-theory-v13.thf` parses cleanly (no InputError); it is the consolidated record and is not proved as a whole.
+## New in v0.16 (abandonment → res nullius)
+| Theorem | Statement |
+|---|---|
+| abandons_forward | `abandons` entails disowning against every other party |
+| abandoner_not_owner | after abandoning (no re-acquisition), the abandoner holds no title |
+| sole_abandonment_res_nullius | a sole owner's abandonment leaves the object unowned, absent re-acquisition |
+
+## Carried from v0.15 (re-verified)
+person_unownable, self_is_owner, body_sole_owner, sole_owner_grant, self_use,
+unowned_use, theft_forbidden, bodily_integrity, selective_consent,
+joint_deadlock, compatible_manner_permitted, homesteader_is_owner_v2,
+homesteader_owns_v2, homesteader_may_use_v2, owns_not_unowned,
+persistence_from_homestead, first_homesteader_exclusive_v2, nemo_dat,
+transfer_exclusive, share_transfer_unconditional, person_protection_prereqs,
+voluntary_slavery_impossible, theft_retains_ownership, may_use_or_forbidden,
+non_rivalrous_use_permitted.
+
+## Model checks (Z3 4.16.0, `consistency/`)
+| Check | Result |
+|---|---|
+| full v0.16 axiom set has a finite model | sat |
+| sole owner abandons → object unowned at next time | sat; witness has `abandons`=T, `is_owner`=F, `unowned`=T |
+| abandoner_not_owner antecedent satisfiable (non-vacuous) | sat |

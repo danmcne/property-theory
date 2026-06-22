@@ -1,0 +1,5 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
+thf(disowns_decl,type,disowns:en>en>en>tm>$o). thf(abandons_decl,type,abandons:en>en>tm>$o).
+thf(abandons_def,axiom,![P:en,O:en,T:tm]:(abandons(P,O,T)<=>(np_obj(O)&is_owner(P,O,T)&(![Q:en]:((person(Q)&(P!=Q))=>disowns(P,O,Q,T)))))).
+thf(abandons_forward, conjecture, ![P:en,O:en,T:tm]:(abandons(P,O,T)=>(![Q:en]:((person(Q)&(P!=Q))=>disowns(P,O,Q,T))))).

@@ -1,0 +1,5 @@
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
+thf(vol_transfer_decl,type,vol_transfer:en>en>en>tm>$o). thf(may_transfer_decl,type,may_transfer:en>en>en>tm>$o).
+thf(transfer_permitted, axiom, ![P1:en,P2:en,O:en,T:tm]: ((is_owner(P1,O,T)&person(P2)&(P1!=P2)&np_obj(O)) => may_transfer(P1,P2,O,T))).
+thf(share_transfer_unconditional, conjecture, ![P1:en,P2:en,O:en,T:tm]: ((is_owner(P1,O,T)&person(P2)&(P1!=P2)&np_obj(O)) => may_transfer(P1,P2,O,T))).

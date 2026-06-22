@@ -1,0 +1,94 @@
+% ===========================================================================
+% Libertarian Property Theory — v0.16  (TPTP THF / Leo-III; Z3 model checks)
+% Person-scoped consent: ONE rule (use_grant + use_veto + self_consent)
+% unifies unowned-use, self-use, NAP, theft, bodily integrity, and the
+% co-ownership veto. consents(R,O,Q,M,T) = owner R consents to person Q using
+% object O in manner M at time T.  v0.16 adds `abandons` (relinquish against
+% every party) and derives res nullius.  Record file; theorems in minimal/.
+% All axioms are model-checked: the full set has a finite Z3 model (CONSISTENCY.md).
+% ===========================================================================
+thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
+
+thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o). thf(rivalrous_decl,type,rivalrous:en>$o).
+thf(before_decl,type,before:tm>tm>$o).
+thf(use_decl,type,use:en>en>man>tm>$o). thf(claim_decl,type,claim:en>en>tm>$o).
+thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o). thf(unowned_decl,type,unowned:en>tm>$o).
+thf(disowns_decl,type,disowns:en>en>en>tm>$o). thf(nodis_decl,type,nodis:en>en>en>tm>tm>$o). thf(reacquires_decl,type,reacquires:en>en>en>tm>tm>$o).
+thf(vol_transfer_decl,type,vol_transfer:en>en>en>tm>$o).
+thf(excl_decl,type,excl:man>man>$o). thf(wants_decl,type,wants:en>en>man>tm>$o). thf(unrealised_decl,type,unrealised:en>en>man>tm>$o).
+thf(consents_decl,type,consents:en>en>en>man>tm>$o).
+thf(may_use_decl,type,may_use:en>en>man>tm>$o). thf(forbidden_use_decl,type,forbidden_use:en>en>man>tm>$o).
+thf(may_claim_decl,type,may_claim:en>en>tm>$o). thf(may_disown_decl,type,may_disown:en>en>en>tm>$o). thf(may_transfer_decl,type,may_transfer:en>en>en>tm>$o). thf(abandons_decl,type,abandons:en>en>tm>$o).
+
+% --- (2) time ---
+thf(time_irreflexive,axiom,![T:tm]:~before(T,T)).
+thf(time_transitive,axiom,![A:tm,B:tm,C:tm]:((before(A,B)&before(B,C))=>before(A,C))).
+thf(time_total,axiom,![A:tm,B:tm]:(before(A,B)|before(B,A)|(A=B))).
+thf(time_nonempty,axiom,?[A:tm,B:tm]:before(A,B)).
+% --- (3) entities ---
+thf(entity_disjoint,axiom,![X:en]:~(person(X)&np_obj(X))).
+thf(exist_persons,axiom,?[P1:en,P2:en]:(person(P1)&person(P2)&(P1!=P2))).
+thf(exist_np_obj,axiom,?[O:en]:np_obj(O)).
+thf(person_rivalrous,axiom,![P:en]:(person(P)=>rivalrous(P))).
+% --- (4-5) typing ---
+thf(use_typing,axiom,![P:en,O:en,M:man,T:tm]:(use(P,O,M,T)=>(person(P)&(np_obj(O)|person(O))))).
+thf(claim_typing,axiom,![P:en,O:en,T:tm]:(claim(P,O,T)=>(person(P)&np_obj(O)))).
+% --- (6) ownership ---
+thf(owns_typing,axiom,![P:en,O:en,Q:en,T:tm]:(owns(P,O,Q,T)=>(person(P)&(np_obj(O)|(O=P))&person(Q)&(P!=Q)))).
+thf(anti_slavery,axiom,![P:en,O:en,Q:en,T:tm]:((person(P)&person(O)&(P!=O))=>~owns(P,O,Q,T))).
+thf(self_ownership,axiom,![P:en,Q:en,T:tm]:((person(P)&person(Q)&(P!=Q))=>owns(P,P,Q,T))).
+% --- (7) is_owner / unowned / rivalrous-ownable ---
+thf(is_owner_def,axiom,![P:en,O:en,T:tm]:(is_owner(P,O,T)<=> ?[Q:en]:owns(P,O,Q,T))).
+thf(unowned_def,axiom,![O:en,T:tm]:(unowned(O,T)<=> ![P:en]:~is_owner(P,O,T))).
+thf(exist_unowned,axiom,?[O:en,T:tm]:(np_obj(O)&unowned(O,T))).
+thf(rivalrous_ownable,axiom,![O:en,T:tm]:(~rivalrous(O)=>unowned(O,T))).
+% --- (8) homesteading ---
+thf(homesteading,axiom,![P:en,O:en,Q:en,M:man,T1:tm,T2:tm]:
+  ((person(P)&np_obj(O)&use(P,O,M,T1)&claim(P,O,T1)&unowned(O,T1)&before(T1,T2)&person(Q)&(P!=Q))=>owns(P,O,Q,T2))).
+% --- (9) disowns / persistence / extinction ---
+thf(disowns_typing,axiom,![P:en,O:en,Q:en,T:tm]:(disowns(P,O,Q,T)=>(person(P)&np_obj(O)&person(Q)&(P!=Q)&owns(P,O,Q,T)))).
+thf(nodis_def,axiom,![P:en,O:en,Q:en,T1:tm,T2:tm]:
+  (nodis(P,O,Q,T1,T2)<=> ![T:tm]:(((((T=T1)|before(T1,T))&((T=T2)|before(T,T2)))=>(~disowns(P,O,Q,T)))))).
+thf(ownership_persistence,axiom,![P:en,O:en,Q:en,T1:tm,T2:tm]:((owns(P,O,Q,T1)&before(T1,T2)&nodis(P,O,Q,T1,T2))=>owns(P,O,Q,T2))).
+thf(disown_extinguishes,axiom,![P:en,O:en,Q:en,T1:tm,T2:tm]:((disowns(P,O,Q,T1)&before(T1,T2)&~reacquires(P,O,Q,T1,T2))=>~owns(P,O,Q,T2))).
+% --- (10) voluntary transfer ---
+thf(vol_transfer_typing,axiom,![P1:en,P2:en,O:en,T:tm]:(vol_transfer(P1,P2,O,T)=>(is_owner(P1,O,T)&person(P2)&(P1!=P2)&np_obj(O)))).
+thf(vol_transfer_disowns,axiom,![P1:en,P2:en,O:en,Q:en,T:tm]:((vol_transfer(P1,P2,O,T)&owns(P1,O,Q,T))=>disowns(P1,O,Q,T))).
+thf(vol_transfer_grants,axiom,![P1:en,P2:en,O:en,Q:en,T:tm]:((vol_transfer(P1,P2,O,T)&person(Q)&(P2!=Q))=>owns(P2,O,Q,T))).
+% --- (10b) abandonment = relinquish against EVERY other party (v0.16) ---
+% The bridge from relational `disowns` (one P-vs-Q claim) to global `unowned`
+% (no owner against anyone): a sole owner who disowns against all parties
+% leaves the object res nullius.  Model-checked consistent; res nullius
+% witnessed in consistency/scenarios_v016.py.
+thf(abandons_def,axiom,![P:en,O:en,T:tm]:
+  (abandons(P,O,T) <=> (np_obj(O)&is_owner(P,O,T)&(![Q:en]:((person(Q)&(P!=Q))=>disowns(P,O,Q,T)))))).
+% --- (11) reified deontic bridge ---
+thf(use_liberty,axiom,![P:en,O:en,M:man,T:tm]:(may_use(P,O,M,T)<=>~forbidden_use(P,O,M,T))).
+% --- (12) UNIFIED person-scoped consent rule ---
+% You may use O in manner M iff you are a person, O is usable, and every owner
+% of O consents to YOU using it that way. Owners always consent to themselves.
+thf(use_grant,axiom,![Q:en,O:en,M:man,T:tm]:
+  (((person(Q)&(np_obj(O)|person(O)))&(![R:en]:(is_owner(R,O,T)=>consents(R,O,Q,M,T))))=>may_use(Q,O,M,T))).
+thf(use_veto,axiom,![R:en,O:en,Q:en,M:man,T:tm]:
+  ((is_owner(R,O,T)&~consents(R,O,Q,M,T))=>forbidden_use(Q,O,M,T))).
+thf(self_consent,axiom,![P:en,O:en,M:man,T:tm]:(is_owner(P,O,T)=>consents(P,O,P,M,T))).
+% --- (13) action permissions ---
+thf(homesteading_permitted,axiom,![P:en,O:en,M:man,T:tm]:((person(P)&np_obj(O)&use(P,O,M,T)&unowned(O,T))=>may_claim(P,O,T))).
+thf(abandonment_permitted,axiom,![P:en,O:en,Q:en,T:tm]:((is_owner(P,O,T)&np_obj(O))=>may_disown(P,O,Q,T))).
+thf(transfer_permitted,axiom,![P1:en,P2:en,O:en,T:tm]:((is_owner(P1,O,T)&person(P2)&(P1!=P2)&np_obj(O))=>may_transfer(P1,P2,O,T))).
+% --- (14) physical / motivational layer ---
+thf(excl_factual,axiom,![O:en,P1:en,P2:en,M1:man,M2:man,T:tm]:((rivalrous(O)&excl(M1,M2))=>~(use(P1,O,M1,T)&use(P2,O,M2,T)))).
+thf(unrealised_def,axiom,![P:en,O:en,M:man,T:tm]:(unrealised(P,O,M,T)<=>(wants(P,O,M,T)&~use(P,O,M,T)))).
+
+% ===========================================================================
+% THEOREMS (verified individually in minimal/ — SZS status Theorem):
+%  base lemmas: person_unownable, self_is_owner, body_sole_owner, sole_owner_grant
+%  recovered:   self_use, unowned_use, theft_forbidden, bodily_integrity (granular)
+%  co-owner:    joint_deadlock, compatible_manner_permitted, selective_consent
+%  acquisition: homesteader_is_owner_v2, homesteader_owns_v2, homesteader_may_use_v2,
+%               owns_not_unowned, persistence_from_homestead, first_homesteader_exclusive_v2
+%  transfer:    nemo_dat, transfer_exclusive, share_transfer_unconditional
+%  persons:     person_protection_prereqs, voluntary_slavery_impossible, theft_retains_ownership
+%  deontic:     may_use_or_forbidden ;  IP: non_rivalrous_use_permitted
+%  abandonment: abandons_forward, abandoner_not_owner, sole_abandonment_res_nullius
+% ===========================================================================
