@@ -1,0 +1,285 @@
+{
+ "consistency": {
+  "domain": {
+   "en": 4,
+   "man": 2,
+   "tm": 5
+  },
+  "result": "sat"
+ },
+ "scenarios": {
+  "co_ownership_consistent": {
+   "expect": "sat",
+   "forced": {
+    "forbidden_use(ada,field,plow,t1)": true,
+    "forbidden_use(ben,field,sow,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "co_ownership_under_control_view": {
+   "expect": "unsat",
+   "forced": {},
+   "ok": true,
+   "result": "unsat"
+  },
+  "co_ownership_under_direction_view": {
+   "expect": "unsat",
+   "forced": {},
+   "ok": true,
+   "result": "unsat"
+  },
+  "co_ownership_with_protection_against_outsiders": {
+   "expect": "sat",
+   "forced": {
+    "may_use(ada,field,plow,t1)": true,
+    "may_use(ben,field,sow,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "co_ownership_with_protection_only": {
+   "expect": "sat",
+   "forced": {},
+   "ok": true,
+   "result": "sat"
+  },
+  "co_ownership_with_use_liberty_only": {
+   "expect": "sat",
+   "forced": {},
+   "ok": true,
+   "result": "sat"
+  },
+  "double_spend_sequential": {
+   "expect": "unsat",
+   "forced": {},
+   "ok": true,
+   "result": "unsat"
+  },
+  "easement": {
+   "expect": "sat",
+   "forced": {
+    "((~ consents(ada,field,cy,plow,t2) & ~ aggresses(ada,cy,t2)) => forbidden_use(cy,field,plow,t2))": true,
+    "may_use(cy,field,walk,t2)": true,
+    "owns(ada,field,cy,plow,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "ex_nihilo_title": {
+   "expect": "unsat",
+   "forced": {},
+   "ok": true,
+   "result": "unsat"
+  },
+  "fight_ada_started": {
+   "expect": "sat",
+   "forced": {
+    "~ aggresses(ben,ada,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "fight_ben_started": {
+   "expect": "sat",
+   "forced": {
+    "~ aggresses(ada,ben,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "fight_one_aggressor": {
+   "expect": "sat",
+   "forced": {
+    "(aggresses(ada,ben,t1) <=> ~ aggresses(ben,ada,t1))": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "fist_and_nose": {
+   "expect": "sat",
+   "forced": {
+    "aggresses(cy,ada,t1)": true,
+    "may_use(cy,knife,cut,t1)": true,
+    "~ permissible(cy,cut,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "free_use_ada_acts_first": {
+   "expect": "sat",
+   "forced": {
+    "may_use(ben,field,sow,t2)": true,
+    "unrealised(ben,field,sow,t2)": true,
+    "~ aggresses(ada,ben,t2)": true,
+    "~ aggresses(ben,ada,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "free_use_ben_acts_first": {
+   "expect": "sat",
+   "forced": {
+    "may_use(ada,field,plow,t2)": true,
+    "unrealised(ada,field,plow,t2)": true,
+    "~ aggresses(ada,ben,t2)": true,
+    "~ aggresses(ben,ada,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "gift_refused": {
+   "expect": "sat",
+   "forced": {
+    "~ owns(ben,field,cy,sow,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "idea_claim_inert": {
+   "expect": "sat",
+   "forced": {
+    "may_use(ben,song,sing,t1)": true,
+    "~ is_owner(ada,song,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "idleness_is_not_control": {
+   "expect": "sat",
+   "forced": {
+    "![M:man]: ~ unrealised(ada,field,M,t1)": true,
+    "unrealised(ada,field,sow,t2)": true,
+    "unrealised(ben,field,plow,t1)": true,
+    "~ controls(ada,field,t1)": true,
+    "~ controls(ben,field,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "joint_homestead": {
+   "expect": "sat",
+   "forced": {
+    "full_owner(ada,field,t1)": true,
+    "full_owner(ben,field,t1)": true,
+    "owns(ada,field,ben,sow,t2)": true,
+    "~ is_owner(cy,field,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "joint_purchase": {
+   "expect": "sat",
+   "forced": {
+    "full_owner(ben,field,t2)": true,
+    "full_owner(cy,field,t2)": true,
+    "~ is_owner(ada,field,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "lease": {
+   "expect": "sat",
+   "forced": {
+    "![Q:en]: ~ owns(ada,field,Q,sow,t2)": true,
+    "may_use(ben,field,sow,t2)": true,
+    "owns(ada,field,ben,plow,t2)": true,
+    "owns(ben,field,ada,sow,t2)": true,
+    "owns(ben,field,cy,sow,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "lone_user_same_manner": {
+   "expect": "sat",
+   "forced": {},
+   "ok": true,
+   "result": "sat"
+  },
+  "non_owner_may_use": {
+   "expect": "sat",
+   "forced": {
+    "may_use(cy,field,sow,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "owner_may_be_forbidden": {
+   "expect": "sat",
+   "forced": {
+    "forbidden_use(ben,field,plow,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "owner_refuses_two_rivals": {
+   "expect": "sat",
+   "forced": {
+    "forbidden_use(ben,field,plow,t1)": true,
+    "forbidden_use(cy,field,sow,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "owner_refuses_two_rivals_under_direction_view": {
+   "expect": "unsat",
+   "forced": {},
+   "ok": true,
+   "result": "unsat"
+  },
+  "partial_abandonment": {
+   "expect": "sat",
+   "forced": {
+    "owns(ada,field,cy,plow,t2)": true,
+    "unowned(field,t3)": true,
+    "~ owns(ada,field,ben,plow,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "partial_title_no_veto": {
+   "expect": "sat",
+   "forced": {
+    "may_use(ben,field,plow,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "rivals_same_manner": {
+   "expect": "unsat",
+   "forced": {},
+   "ok": true,
+   "result": "unsat"
+  },
+  "self_defence": {
+   "expect": "sat",
+   "forced": {
+    "aggresses(cy,ada,t1)": true,
+    "may_use(ada,cy,hold,t1)": true,
+    "~ aggresses(ada,cy,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "share_gift": {
+   "expect": "sat",
+   "forced": {
+    "full_owner(ada,field,t2)": true,
+    "full_owner(ben,field,t2)": true,
+    "owns(ben,field,cy,plow,t2)": true
+   },
+   "ok": true,
+   "result": "sat"
+  },
+  "sole_ownership_under_control_view": {
+   "expect": "sat",
+   "forced": {
+    "forbidden_use(ben,field,sow,t1)": true,
+    "may_use(ada,field,sow,t1)": true
+   },
+   "ok": true,
+   "result": "sat"
+  }
+ },
+ "seconds": 45.7
+}

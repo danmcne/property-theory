@@ -1,0 +1,89 @@
+{
+ "A_theory": {
+  "all_formulas_hold": true,
+  "domain_sizes": {
+   "en": 3,
+   "man": 1,
+   "tm": 2
+  },
+  "expect": "Satisfiable",
+  "failing": [],
+  "status": "Satisfiable"
+ },
+ "B_co_ownership": {
+  "all_formulas_hold": true,
+  "domain_sizes": {
+   "en": 3,
+   "man": 2,
+   "tm": 2
+  },
+  "expect": "Satisfiable",
+  "failing": [],
+  "status": "Satisfiable"
+ },
+ "C_control_co_ownership": {
+  "expect": "Unsatisfiable",
+  "status": "Unsatisfiable"
+ },
+ "D_direction_co_ownership": {
+  "expect": "Unsatisfiable",
+  "status": "Unsatisfiable"
+ },
+ "nonvacuity": {
+  "abandoner_not_owner": "sat (model re-checked)",
+  "action_liberty": "sat (model re-checked)",
+  "aggression_iff_forbidden_use": "n/a",
+  "bodily_integrity": "sat (model re-checked)",
+  "body_sole_owner": "sat (model re-checked)",
+  "co_owner_trespass": "sat (model re-checked)",
+  "co_owner_use_by_consent": "sat (model re-checked)",
+  "control_coownership_contradiction": "n/a",
+  "control_needs_deference": "sat (model re-checked)",
+  "control_no_refusal": "sat (model re-checked)",
+  "defence_is_not_aggression": "sat (model re-checked)",
+  "direction_forbids_deadlock": "n/a",
+  "direction_overreach": "n/a",
+  "disown_extinguishes": "sat (model re-checked)",
+  "easement_use": "sat (model re-checked)",
+  "endless_past_paradox": "n/a",
+  "fight_one_aggressor": "sat (model re-checked)",
+  "first_homesteader_exclusive": "sat (model re-checked)",
+  "free_use_unsettled": "sat (model re-checked)",
+  "grant_conveys": "sat (model re-checked)",
+  "homesteader_full_owner": "sat (model re-checked)",
+  "homesteader_owns": "sat (model re-checked)",
+  "joint_deadlock": "sat (model re-checked)",
+  "joint_homesteading": "sat (model re-checked)",
+  "joint_purchase": "sat (model re-checked)",
+  "lease_tenant_excludes_landlord": "sat (model re-checked)",
+  "lessor_loses_manner": "sat (model re-checked)",
+  "life_cycle": "sat (model re-checked)",
+  "nemo_dat": "sat (model re-checked)",
+  "no_double_spend": "sat (model re-checked)",
+  "no_fresh_title": "sat (model re-checked)",
+  "no_self_aggression": "n/a",
+  "no_self_exclusion": "n/a",
+  "no_title_without_acceptance": "sat (model re-checked)",
+  "nonrival_use_free": "sat (model re-checked)",
+  "ownership_is_not_licence": "sat (model re-checked)",
+  "person_unownable": "sat (model re-checked)",
+  "refraining_innocent": "sat (model re-checked)",
+  "res_nullius": "sat (model re-checked)",
+  "rival_wants_unrealised": "sat (model re-checked)",
+  "selective_consent": "sat (model re-checked)",
+  "self_use": "sat (model re-checked)",
+  "share_gift": "sat (model re-checked)",
+  "sole_owner_controls": "sat (model re-checked)",
+  "theft_forbidden": "sat (model re-checked)",
+  "title_persists": "sat (model re-checked)",
+  "transfer_is_abandonment": "sat (model re-checked)",
+  "transferee_owns": "sat (model re-checked)",
+  "transferor_not_owner": "sat (model re-checked)",
+  "unanimity": "sat (model re-checked)",
+  "unexcluded_use": "sat (model re-checked)",
+  "unowned_use": "sat (model re-checked)",
+  "unowned_use_innocent": "sat (model re-checked)",
+  "veto_settles_conflict": "sat (model re-checked)",
+  "voluntary_slavery_impossible": "sat (model re-checked)"
+ }
+}

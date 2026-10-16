@@ -1,0 +1,9 @@
+flowchart TD
+    start([A person plans an action]) --> next[Take the next thing it uses]
+    next --> excl{Can anyone exclude the person?}
+    excl -->|No| more{Does the action use more things?}
+    excl -->|Yes| cons{Do they all consent?}
+    cons -->|Yes| more
+    cons -->|No| bad([Not permissible])
+    more -->|Yes| next
+    more -->|No| ok([Permissible])

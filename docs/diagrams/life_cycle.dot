@@ -1,0 +1,17 @@
+digraph life_cycle {
+    rankdir=LR;
+    node [shape=box, style=rounded, fontname="Helvetica"];
+    edge [fontname="Helvetica", fontsize=11];
+    start [shape=point, width=0.15];
+    unowned [label="Unowned"];
+    sole [label="Owned by one person"];
+    co [label="Co-owned"];
+    start -> unowned;
+    unowned -> sole [label="one person homesteads"];
+    unowned -> co [label="two persons homestead together"];
+    sole -> co [label="share gift, or sale to two persons"];
+    co -> sole [label="one of two co-owners abandons"];
+    sole -> unowned [label="sole owner abandons"];
+    sole -> sole [label="owner transfers"];
+    co -> co [label="co-owner transfers"];
+}

@@ -1,8 +1,0 @@
-thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
-thf(np_obj_decl,type,np_obj:en>$o). thf(use_decl,type,use:en>en>man>tm>$o).
-thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o).
-thf(allows_decl,type,allows:en>en>en>tm>$o).
-thf(is_owner_def, axiom, ![P:en,O:en,T:tm]: (is_owner(P,O,T) <=> ?[Q:en]: owns(P,O,Q,T))).
-thf(theft_retains_ownership, conjecture,
-  ![P:en,O:en,Q:en,M:man,T:tm]:
-    ((owns(P,O,Q,T) & np_obj(O) & ~allows(P,O,Q,T) & use(Q,O,M,T)) => is_owner(P,O,T))).

@@ -1,7 +1,0 @@
-thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
-thf(person_decl,type,person:en>$o). thf(np_obj_decl,type,np_obj:en>$o).
-thf(vol_transfer_decl,type,vol_transfer:en>en>en>tm>$o).
-thf(entity_disjoint, axiom, ![X:en]: ~(person(X) & np_obj(X))).
-thf(vol_transfer_np_obj, axiom, ![P1:en,P2:en,O:en,T:tm]: (vol_transfer(P1,P2,O,T) => np_obj(O))).
-thf(voluntary_slavery_impossible, conjecture,
-  ![P1:en,P2:en,T:tm]: ((person(P1)&person(P2)&(P1!=P2)) => ~vol_transfer(P1,P2,P1,T))).

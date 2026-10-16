@@ -1,0 +1,252 @@
+# Controlled vocabulary for the documentation of the Libertarian Property Theory.
+# One [[term]] per concept. Use only `name` in the documentation.
+# `code` gives the predicate in the formal theory, when there is one.
+# The checker reports every word under `avoid` as an error.
+
+known = ["TPTP", "THF", "TFF", "FOF", "JSON", "PDF", "SZS", "IP"]
+
+[[term]]
+name = "person"
+code = "person"
+means = "A human being: someone who can act, use things, claim, consent and hold titles."
+avoid = ["individual", "agent", "actor"]
+
+[[term]]
+name = "object"
+code = "np_obj"
+means = "A thing that is not a person, for example a field, a knife or a song."
+avoid = ["good", "resource", "item"]
+
+[[term]]
+name = "body"
+means = "A person considered as a thing that someone can use."
+
+[[term]]
+name = "thing"
+means = "An object or a body: anything that someone can use."
+
+[[term]]
+name = "instant"
+code = "tm"
+means = "A point in time. Instants are totally ordered by 'before'."
+avoid = ["moment", "time point", "timestep"]
+
+[[term]]
+name = "manner"
+code = "man"
+means = "A way of using a thing, for example plow, sow, walk or sing."
+avoid = ["mode of use", "kind of use"]
+
+[[term]]
+name = "use"
+code = "use"
+means = "A person uses a thing in a manner at an instant."
+
+[[term]]
+name = "action"
+means = "What one person does in one manner at one instant. One action can use several things."
+
+[[term]]
+name = "clash"
+code = "clash"
+means = "Two uses of a thing clash when two different use events in those manners cannot happen at the same instant."
+avoid = ["conflict of uses", "incompatible uses"]
+
+[[term]]
+name = "scarce"
+code = "rivalrous"
+means = "A thing is scarce when some two uses of it clash."
+avoid = ["rival", "rivalrous", "excludable"]
+
+[[term]]
+name = "title"
+code = "owns"
+means = "The right of one person to exclude one other person from using one thing in one manner, at one instant."
+avoid = ["property right", "entitlement", "deed"]
+
+[[term]]
+name = "exclude"
+means = "To forbid another person to use a thing, by withholding consent."
+
+[[term]]
+name = "owner"
+code = "is_owner"
+means = "A person who holds at least one title over a thing."
+avoid = ["proprietor", "holder of property"]
+
+[[term]]
+name = "full owner"
+code = "full_owner"
+means = "A person who holds a title against every other person, in every manner, over a thing."
+avoid = ["sole owner (when meaning full owner)", "absolute owner"]
+
+[[term]]
+name = "co-owners"
+means = "Two or more full owners of the same thing at the same instant. Each holds a title against the others."
+avoid = ["joint owners", "part-owners", "shareholders"]
+
+[[term]]
+name = "unowned"
+code = "unowned"
+means = "Nobody holds a title over the thing."
+avoid = ["ownerless", "res nullius"]
+
+[[term]]
+name = "consent"
+code = "consents"
+means = "An owner consents to one person using a thing in one manner at one instant."
+avoid = ["approve"]
+
+[[term]]
+name = "permitted"
+code = "may_use"
+means = "A use is permitted when every person who holds an unforfeited title against the user, over that thing and in that manner, consents."
+
+[[term]]
+name = "forbidden"
+code = "forbidden_use"
+means = "A use is forbidden when it is not permitted."
+avoid = ["prohibited", "illegal"]
+
+[[term]]
+name = "permissible"
+code = "permissible"
+means = "An action is permissible when each of its uses is permitted."
+
+[[term]]
+name = "aggression"
+code = "aggresses"
+means = "A use of a thing without the consent of a person who holds an unforfeited title against the user over that thing in that manner."
+avoid = ["violation", "invasion", "rights violation"]
+
+[[term]]
+name = "claim"
+code = "claim"
+means = "The act by which a person declares that he takes an object."
+
+[[term]]
+name = "homestead"
+means = "To use and claim a scarce unowned object. A homestead is an acquisition event."
+avoid = ["original appropriation", "first possession"]
+
+[[term]]
+name = "grant"
+code = "grants"
+means = "An owner gives another person one title over an object and keeps his own titles."
+avoid = ["assign", "convey"]
+
+[[term]]
+name = "share gift"
+code = "gives_share"
+means = "An owner grants another person every title he holds over an object, and a title against himself."
+avoid = ["partial transfer"]
+
+[[term]]
+name = "transfer"
+code = "vol_transfer"
+means = "A share gift and an abandonment by the same owner at the same instant."
+avoid = ["conveyance"]
+
+[[term]]
+name = "control"
+code = "controls"
+means = "A person controls a thing when he may use it in every manner and each other person may use it exactly when he consents."
+avoid = ["dominion", "de facto ownership"]
+
+[[term]]
+name = "release"
+code = "disowns"
+means = "An owner gives up one title at one instant."
+avoid = ["disown", "relinquish", "waive"]
+
+[[term]]
+name = "abandon"
+code = "abandons"
+means = "An owner releases every title he holds over an object at one instant."
+
+[[term]]
+name = "acquisition event"
+code = "acquires"
+means = "A homestead, or a grant that carries a title, at one instant."
+
+[[term]]
+name = "want"
+code = "wants"
+means = "A person wants to use a thing in a manner at an instant."
+avoid = ["desire", "preference"]
+
+[[term]]
+name = "exclusion view"
+means = "The view that ownership is the right to exclude others, and nothing more."
+
+[[term]]
+name = "control view"
+means = "The view that ownership is also a right to use the thing as the owner wants."
+avoid = ["use view", "dominion view"]
+
+[[term]]
+name = "axiom"
+means = "A statement that the theory accepts without proof."
+avoid = ["postulate"]
+
+[[term]]
+name = "definition"
+means = "A statement that introduces a new name for a combination of other terms."
+
+[[term]]
+name = "theorem"
+means = "A statement that a prover derives from the axioms and definitions."
+avoid = ["lemma"]
+
+[[term]]
+name = "model"
+means = "A world, described in full, in which every axiom and definition is true."
+avoid = ["interpretation", "structure"]
+
+[[term]]
+name = "consistent"
+means = "A set of statements is consistent when it has a model."
+
+[[term]]
+name = "contradiction"
+means = "A set of statements is a contradiction when it has no model."
+avoid = ["inconsistency", "paradox"]
+
+[[term]]
+name = "prover"
+means = "A program that searches for a proof that statements follow from axioms."
+avoid = ["solver", "reasoner"]
+
+[[term]]
+name = "model finder"
+means = "A program that searches for a finite model."
+
+[[term]]
+name = "forfeit"
+code = "forfeits"
+means = "While a person aggresses against another, he forfeits, with respect to his victim, his titles over his own body and over the things he uses in the aggression."
+avoid = ["lose rights", "waive"]
+
+[[term]]
+name = "accept"
+code = "accepts"
+means = "A person accepts the grants that another person makes to him over an object at one instant."
+
+[[term]]
+name = "lease"
+code = "transfers_manner"
+means = "An owner transfers his titles in some manners only; he keeps his titles in all other manners."
+avoid = ["rental", "tenancy"]
+
+[[term]]
+name = "easement"
+means = "An owner releases one person from one manner, for example from walking across a field."
+avoid = ["servitude", "right of way (as a defined term)"]
+
+[[term]]
+name = "direction view"
+means = "The view that every conflict over a thing has a just victor, whose use is permitted while the other's use is forbidden."
+
+[[term]]
+name = "just victor"
+means = "In the direction view, the party to a conflict whose use is permitted while the other party's use is forbidden."

@@ -1,5 +1,0 @@
-thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
-thf(owns_decl,type,owns:en>en>en>tm>$o). thf(is_owner_decl,type,is_owner:en>en>tm>$o). thf(unowned_decl,type,unowned:en>tm>$o).
-thf(is_owner_def, axiom, ![P:en,O:en,T:tm]: (is_owner(P,O,T) <=> ?[Q:en]: owns(P,O,Q,T))).
-thf(unowned_def, axiom, ![O:en,T:tm]: (unowned(O,T) <=> (![P:en]: ~is_owner(P,O,T)))).
-thf(owns_not_unowned, conjecture, ![P:en,O:en,Q:en,T:tm]: (owns(P,O,Q,T) => ~unowned(O,T))).

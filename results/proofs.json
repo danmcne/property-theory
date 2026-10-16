@@ -1,0 +1,906 @@
+{
+ "abandoner_not_owner": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "abandons_def",
+   "disown_extinguishes",
+   "is_owner_def",
+   "no_fresh_title",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "abandons_def",
+   "disown_extinguishes",
+   "is_owner_def",
+   "no_fresh_title"
+  ]
+ },
+ "action_liberty": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "permissible_def",
+   "unexcluded_use"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "permissible_def",
+   "unexcluded_use"
+  ]
+ },
+ "aggression_iff_forbidden_use": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forbidden_use_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forbidden_use_def",
+   "may_use_def"
+  ]
+ },
+ "bodily_integrity": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def",
+   "self_ownership"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def",
+   "self_ownership"
+  ]
+ },
+ "body_sole_owner": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "is_owner_def",
+   "person_unownable"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "is_owner_def",
+   "person_unownable"
+  ]
+ },
+ "co_owner_trespass": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def"
+  ]
+ },
+ "co_owner_use_by_consent": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "may_use_def"
+  ]
+ },
+ "control_coownership_contradiction": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "control_protection",
+   "control_use_liberty",
+   "forbidden_use_def",
+   "is_owner_def",
+   "owns_typing"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "control_protection",
+   "control_use_liberty",
+   "forbidden_use_def",
+   "is_owner_def",
+   "owns_typing"
+  ]
+ },
+ "control_needs_deference": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "controls_def",
+   "forfeits_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "controls_def",
+   "forfeits_def",
+   "may_use_def"
+  ]
+ },
+ "control_no_refusal": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "control_use_liberty",
+   "forfeits_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "control_use_liberty",
+   "forfeits_def",
+   "may_use_def"
+  ]
+ },
+ "defence_is_not_aggression": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def"
+  ]
+ },
+ "derived_an_object": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "unowned_exists"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "unowned_exists"
+  ]
+ },
+ "derived_persons_rivalrous": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "is_owner_def",
+   "nonrivalrous_unowned",
+   "self_ownership",
+   "two_persons",
+   "unowned_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "is_owner_def",
+   "nonrivalrous_unowned",
+   "self_ownership",
+   "two_persons",
+   "unowned_def"
+  ]
+ },
+ "direction_forbids_deadlock": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "direction_exhaustive",
+   "forbidden_use_def",
+   "theft_forbidden"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "direction_exhaustive",
+   "forbidden_use_def",
+   "theft_forbidden"
+  ]
+ },
+ "direction_overreach": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "direction_exhaustive",
+   "forbidden_use_def",
+   "theft_forbidden"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "direction_exhaustive",
+   "forbidden_use_def",
+   "theft_forbidden"
+  ]
+ },
+ "disown_extinguishes": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "disowns_typing",
+   "nodis_upto_def",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "title_genesis"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "disowns_typing",
+   "nodis_upto_def",
+   "time_total",
+   "title_genesis"
+  ]
+ },
+ "easement_use": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "disown_extinguishes",
+   "unexcluded_use"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "disown_extinguishes",
+   "unexcluded_use"
+  ]
+ },
+ "endless_past_paradox": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "acquires_def",
+   "is_owner_def",
+   "nodis_upto_def",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "title_acquired",
+   "title_genesis",
+   "unowned_def",
+   "use_typing"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "acquires_def",
+   "is_owner_def",
+   "nodis_upto_def",
+   "time_total",
+   "time_transitive",
+   "title_acquired",
+   "title_genesis",
+   "unowned_def",
+   "use_typing"
+  ]
+ },
+ "fight_one_aggressor": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def",
+   "self_ownership"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forfeits_def",
+   "self_ownership"
+  ]
+ },
+ "first_homesteader_exclusive": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "homesteader_owns",
+   "is_owner_def",
+   "unowned_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "homesteader_owns",
+   "is_owner_def",
+   "unowned_def"
+  ]
+ },
+ "free_use_unsettled": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "clash_factual",
+   "unexcluded_use"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "clash_factual",
+   "unexcluded_use"
+  ]
+ },
+ "grant_conveys": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "acquires_def",
+   "grant_typing",
+   "is_owner_def",
+   "owns_typing",
+   "title_acquired"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "acquires_def",
+   "grant_typing",
+   "is_owner_def",
+   "owns_typing",
+   "title_acquired"
+  ]
+ },
+ "homesteader_full_owner": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "full_owner_def",
+   "homesteader_owns"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "full_owner_def",
+   "homesteader_owns"
+  ]
+ },
+ "homesteader_owns": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "acquires_def",
+   "title_acquired"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "acquires_def",
+   "title_acquired"
+  ]
+ },
+ "joint_deadlock": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "theft_forbidden"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "theft_forbidden"
+  ]
+ },
+ "joint_homesteading": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "homesteader_full_owner"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "homesteader_full_owner"
+  ]
+ },
+ "joint_purchase": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "full_owner_def",
+   "gives_share_def",
+   "grant_typing",
+   "shares_def",
+   "transferee_owns",
+   "vol_transfer_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "full_owner_def",
+   "transferee_owns"
+  ]
+ },
+ "lease_tenant_excludes_landlord": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "grant_conveys",
+   "grant_typing",
+   "shares_def",
+   "transfers_manner_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "grant_conveys",
+   "grant_typing",
+   "shares_def",
+   "transfers_manner_def"
+  ]
+ },
+ "lessor_loses_manner": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "disown_extinguishes",
+   "grant_typing",
+   "no_fresh_title",
+   "shares_def",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "transfers_manner_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "disown_extinguishes",
+   "grant_typing",
+   "no_fresh_title",
+   "shares_def",
+   "transfers_manner_def"
+  ]
+ },
+ "life_cycle": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "homesteader_owns",
+   "res_nullius"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "homesteader_owns",
+   "res_nullius"
+  ]
+ },
+ "nemo_dat": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "acquires_def",
+   "title_genesis"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "acquires_def",
+   "title_genesis"
+  ]
+ },
+ "no_double_spend": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "grant_typing",
+   "transferor_not_owner"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "grant_typing",
+   "transferor_not_owner"
+  ]
+ },
+ "no_fresh_title": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "nodis_upto_def",
+   "owns_typing",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "title_acquired",
+   "title_genesis"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "nodis_upto_def",
+   "owns_typing",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "title_acquired",
+   "title_genesis"
+  ]
+ },
+ "no_self_aggression": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "no_self_exclusion"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "no_self_exclusion"
+  ]
+ },
+ "no_self_exclusion": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "owns_typing"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "owns_typing"
+  ]
+ },
+ "no_title_without_acceptance": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "acquires_def",
+   "title_genesis"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "acquires_def",
+   "title_genesis"
+  ]
+ },
+ "nonrival_use_free": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "nonrivalrous_unowned",
+   "unowned_use"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "nonrivalrous_unowned",
+   "unowned_use"
+  ]
+ },
+ "ownership_is_not_licence": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forbidden_use_def",
+   "forfeits_def",
+   "permissible_def",
+   "theft_forbidden",
+   "unexcluded_use"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forbidden_use_def",
+   "forfeits_def",
+   "permissible_def",
+   "theft_forbidden",
+   "unexcluded_use"
+  ]
+ },
+ "person_unownable": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "entity_disjoint",
+   "owns_typing"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "entity_disjoint",
+   "owns_typing"
+  ]
+ },
+ "refraining_innocent": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def"
+  ]
+ },
+ "res_nullius": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "abandoner_not_owner",
+   "abandons_def",
+   "is_owner_def",
+   "no_fresh_title",
+   "unowned_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "abandoner_not_owner",
+   "abandons_def",
+   "is_owner_def",
+   "no_fresh_title",
+   "unowned_def"
+  ]
+ },
+ "rival_wants_unrealised": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "clash_factual",
+   "unrealised_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "clash_factual",
+   "unrealised_def"
+  ]
+ },
+ "selective_consent": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "body_sole_owner",
+   "forbidden_use_def",
+   "forfeits_def",
+   "is_owner_def",
+   "may_use_def",
+   "self_ownership"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "body_sole_owner",
+   "forbidden_use_def",
+   "forfeits_def",
+   "is_owner_def",
+   "may_use_def",
+   "self_ownership"
+  ]
+ },
+ "self_use": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "may_use_def",
+   "no_self_exclusion",
+   "person_unownable"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "may_use_def",
+   "no_self_exclusion",
+   "person_unownable"
+  ]
+ },
+ "share_gift": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "full_owner_def",
+   "gives_share_def",
+   "grant_conveys",
+   "grant_typing",
+   "shares_def",
+   "title_persists"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "full_owner_def",
+   "gives_share_def",
+   "grant_conveys",
+   "grant_typing",
+   "shares_def",
+   "title_persists"
+  ]
+ },
+ "sole_owner_controls": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "controls_def",
+   "forfeits_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "controls_def",
+   "forfeits_def",
+   "may_use_def"
+  ]
+ },
+ "theft_forbidden": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "forbidden_use_def",
+   "forfeits_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "forbidden_use_def",
+   "forfeits_def",
+   "may_use_def"
+  ]
+ },
+ "title_persists": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "nodis_upto_def",
+   "owns_typing",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "title_acquired",
+   "title_genesis"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "nodis_upto_def",
+   "owns_typing",
+   "time_irreflexive",
+   "time_total",
+   "time_transitive",
+   "title_acquired",
+   "title_genesis"
+  ]
+ },
+ "transfer_is_abandonment": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "vol_transfer_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "vol_transfer_def"
+  ]
+ },
+ "transferee_owns": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "gives_share_def",
+   "grant_conveys",
+   "shares_def",
+   "vol_transfer_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "gives_share_def",
+   "grant_conveys",
+   "shares_def",
+   "vol_transfer_def"
+  ]
+ },
+ "transferor_not_owner": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "abandoner_not_owner",
+   "transfer_is_abandonment"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "abandoner_not_owner",
+   "transfer_is_abandonment"
+  ]
+ },
+ "unanimity": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "forfeits_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "forfeits_def",
+   "may_use_def"
+  ]
+ },
+ "unexcluded_use": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "may_use_def"
+  ]
+ },
+ "unowned_use": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "is_owner_def",
+   "unexcluded_use",
+   "unowned_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "is_owner_def",
+   "unexcluded_use",
+   "unowned_def"
+  ]
+ },
+ "unowned_use_innocent": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "is_owner_def",
+   "unowned_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "aggresses_in_def",
+   "is_owner_def",
+   "unowned_def"
+  ]
+ },
+ "veto_settles_conflict": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "aggresses_def",
+   "forfeits_def",
+   "full_owner_def",
+   "may_use_def"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "aggresses_def",
+   "forfeits_def",
+   "full_owner_def",
+   "may_use_def"
+  ]
+ },
+ "voluntary_slavery_impossible": {
+  "leo3": "Theorem",
+  "leo3_backend": "E",
+  "leo3_used": [
+   "entity_disjoint",
+   "grant_typing"
+  ],
+  "vampire": "Theorem",
+  "vampire_used": [
+   "entity_disjoint",
+   "grant_typing"
+  ]
+ }
+}

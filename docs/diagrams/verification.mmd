@@ -1,0 +1,14 @@
+%% type: dataflow
+flowchart LR
+    src[(theory.py)] -->|axioms, theorems| build(Generate TPTP files)
+    build -->|THF problems| leo(Prove with Leo-III and E)
+    build -->|TFF problems| vamp(Prove with Vampire)
+    build -->|TFF theory| fmb(Find models with Vampire)
+    src -->|axioms, scenarios| z3(Check scenarios with Z3)
+    src -->|axioms| story(Evaluate the story world)
+    leo -->|proof status| res[(results/)]
+    vamp -->|proof status| res
+    fmb -->|models| eval(Re-evaluate each model)
+    eval -->|pass or fail| res
+    z3 -->|sat or unsat| res
+    story -->|pass or fail| res

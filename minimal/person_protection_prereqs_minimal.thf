@@ -1,9 +1,0 @@
-thf(tm_sort,type,tm:$tType). thf(en_sort,type,en:$tType). thf(man_sort,type,man:$tType).
-thf(person_decl,type,person:en>$o). thf(owns_decl,type,owns:en>en>en>tm>$o).
-thf(is_owner_decl,type,is_owner:en>en>tm>$o).
-thf(self_ownership, axiom,
-  ![P:en,Q:en,T:tm]: ((person(P)&person(Q)&(P!=Q)) => owns(P,P,Q,T))).
-thf(person_unownable, theorem,
-  ![O:en,Q:en,T:tm]: ((person(O)&person(Q)&(O!=Q)) => ~is_owner(Q,O,T))).
-thf(person_protection_prereqs, conjecture,
-  ![P:en,Q:en,T:tm]: ((person(P)&person(Q)&(P!=Q)) => (owns(P,P,Q,T) & ~is_owner(Q,P,T)))).
