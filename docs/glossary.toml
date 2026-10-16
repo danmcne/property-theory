@@ -245,7 +245,7 @@ avoid = ["servitude", "right of way (as a defined term)"]
 
 [[term]]
 name = "direction view"
-means = "The view that every conflict over a thing has a just victor, whose use is permitted while the other's use is forbidden."
+means = "The view that a conflict between two owners of a thing has a just victor, whose use is permitted while the other's use is forbidden."
 
 [[term]]
 name = "just victor"

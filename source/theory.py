@@ -254,11 +254,11 @@ cx('control_protection_outsiders',
    "& person(Q) & (Q != P) & ~ is_owner(Q,O,T)) => forbidden_use(Q,O,M2,T))",
    "Weakened control view: the protection of an owner's wants runs only against persons who hold no title over the thing.")
 cx('direction_exhaustive',
-   "![A:en,B:en,O:en,M1:man,M2:man,T:tm]: ((person(A) & person(B) & (A != B) & wants(A,O,M1,T) "
-   "& wants(B,O,M2,T) & clash(O,M1,M2)) => ((may_use(A,O,M1,T) & forbidden_use(B,O,M2,T)) "
-   "| (may_use(B,O,M2,T) & forbidden_use(A,O,M1,T))))",
-   "Direction view (LiquidZulu): every conflict over the use of a thing has a just victor, whose use is "
-   "permitted while the other's is forbidden.")
+   "![A:en,B:en,O:en,M1:man,M2:man,T:tm]: ((person(A) & person(B) & (A != B) & is_owner(A,O,T) "
+   "& is_owner(B,O,T) & wants(A,O,M1,T) & wants(B,O,M2,T) & clash(O,M1,M2)) "
+   "=> ((may_use(A,O,M1,T) & forbidden_use(B,O,M2,T)) | (may_use(B,O,M2,T) & forbidden_use(A,O,M1,T))))",
+   "Direction view (LiquidZulu): a conflict between two owners of a thing over its use has a just victor, "
+   "whose use is permitted while the other's is forbidden.")
 
 # ---------------------------------------------------------------------------
 # THEOREMS
@@ -605,20 +605,13 @@ th('control_coownership_contradiction', 'contrast', 'headline',
    "co-owners of a scarce thing could never want a clashing use of it. Since wants are free, "
    "co-ownership would be contradictory. Under the exclusion view the same situation has a model.",
    ['forbidden_use_def', 'is_owner_def', 'owns_typing'], contrast=['control_use_liberty', 'control_protection'])
-th('direction_overreach', 'contrast', 'headline',
-   "![R:en,A:en,B:en,O:en,M1:man,M2:man,T:tm]: ~ (person(A) & person(B) & (A != B) "
-   "& owns(R,O,A,M1,T) & owns(R,O,B,M2,T) & ~ consents(R,O,A,M1,T) & ~ consents(R,O,B,M2,T) "
-   "& ~ aggresses(R,A,T) & ~ aggresses(R,B,T) & wants(A,O,M1,T) & wants(B,O,M2,T) & clash(O,M1,M2))",
-   "If every conflict had a just victor (LiquidZulu's premise), an owner could never refuse two rivals "
-   "who want clashing uses of his property: one of them would have to be permitted.",
-   ['forbidden_use_def'], ['theft_forbidden'], contrast=['direction_exhaustive'])
 th('direction_forbids_deadlock', 'contrast', 'headline',
    "![A:en,B:en,O:en,M1:man,M2:man,T:tm]: ~ (person(A) & person(B) & (A != B) "
    "& owns(A,O,B,M2,T) & owns(B,O,A,M1,T) & ~ consents(A,O,B,M2,T) & ~ consents(B,O,A,M1,T) "
    "& ~ aggresses(A,B,T) & ~ aggresses(B,A,T) & wants(A,O,M1,T) & wants(B,O,M2,T) & clash(O,M1,M2))",
-   "Restricted to co-owners, the same premise simply forbids a deadlock between them: it assumes what "
-   "the argument against co-ownership sets out to prove.",
-   ['forbidden_use_def'], ['theft_forbidden'], contrast=['direction_exhaustive'])
+   "With LiquidZulu's premise, co-owners who refuse each other can never want clashing uses: the premise "
+   "rules out exactly the outcome in which neither co-owner may proceed without the other.",
+   ['forbidden_use_def', 'is_owner_def'], ['theft_forbidden'], contrast=['direction_exhaustive'])
 
 
 # ---------------------------------------------------------------------------
@@ -703,14 +696,16 @@ sc('owner_refuses_two_rivals',
        "wants(ben,field,plow,t1)", "wants(cy,field,sow,t1)", "clash(field,plow,sow)"],
    'sat', forced=["forbidden_use(ben,field,plow,t1)", "forbidden_use(cy,field,sow,t1)"])
 sc('owner_refuses_two_rivals_under_direction_view',
-   "The same situation with LiquidZulu's just-victor premise added: no model. The premise forces the "
-   "owner to admit one of the rivals.",
+   "The same situation with LiquidZulu's just-victor premise added. The premise concerns conflicts between "
+   "owners, so it leaves sole ownership untouched: the sole owner may still refuse both rivals.",
    D3, KINDS + ORDER3 + [
+       "~ is_owner(ben,field,t1)", "~ is_owner(cy,field,t1)",
        "![M:man]: (owns(ada,field,ben,M,t1) & owns(ada,field,cy,M,t1))",
        "![P:en,Q:en]: ~ aggresses(P,Q,t1)",
        "~ consents(ada,field,ben,plow,t1)", "~ consents(ada,field,cy,sow,t1)",
        "wants(ben,field,plow,t1)", "wants(cy,field,sow,t1)", "clash(field,plow,sow)"],
-   'unsat', contrast=['direction_exhaustive'])
+   'sat', contrast=['direction_exhaustive'],
+   forced=["forbidden_use(ben,field,plow,t1)", "forbidden_use(cy,field,sow,t1)"])
 FREE = KINDS + ORDER4 + [
     "![M:man]: (owns(ada,field,cy,M,t2) & owns(ben,field,cy,M,t2))",
     "![R:en,M:man]: (~ owns(R,field,ada,M,t2) & ~ owns(R,field,ben,M,t2))",

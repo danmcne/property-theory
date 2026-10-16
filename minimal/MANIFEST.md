@@ -483,20 +483,11 @@ If ownership meant control (use as one wishes, protected against clashing uses b
 - Vampire: Theorem; used control_protection, control_use_liberty, forbidden_use_def, is_owner_def, owns_typing
 - Leo-III (back end: E): Theorem; used control_protection, control_use_liberty, forbidden_use_def, is_owner_def, owns_typing
 
-## `direction_overreach` — headline
-
-If every conflict had a just victor (LiquidZulu's premise), an owner could never refuse two rivals who want clashing uses of his property: one of them would have to be permitted.
-
-- Premises given: `direction_exhaustive`, `forbidden_use_def`, `theft_forbidden`
-- Rests on: `aggresses_def`, `aggresses_in_def`, `direction_exhaustive`, `forbidden_use_def`, `forfeits_def`, `may_use_def`
-- Vampire: Theorem; used direction_exhaustive, forbidden_use_def, theft_forbidden
-- Leo-III (back end: E): Theorem; used direction_exhaustive, forbidden_use_def, theft_forbidden
-
 ## `direction_forbids_deadlock` — headline
 
-Restricted to co-owners, the same premise simply forbids a deadlock between them: it assumes what the argument against co-ownership sets out to prove.
+With LiquidZulu's premise, co-owners who refuse each other can never want clashing uses: the premise rules out exactly the outcome in which neither co-owner may proceed without the other.
 
-- Premises given: `direction_exhaustive`, `forbidden_use_def`, `theft_forbidden`
-- Rests on: `aggresses_def`, `aggresses_in_def`, `direction_exhaustive`, `forbidden_use_def`, `forfeits_def`, `may_use_def`
-- Vampire: Theorem; used direction_exhaustive, forbidden_use_def, theft_forbidden
-- Leo-III (back end: E): Theorem; used direction_exhaustive, forbidden_use_def, theft_forbidden
+- Premises given: `direction_exhaustive`, `forbidden_use_def`, `is_owner_def`, `theft_forbidden`
+- Rests on: `aggresses_def`, `aggresses_in_def`, `direction_exhaustive`, `forbidden_use_def`, `forfeits_def`, `is_owner_def`, `may_use_def`
+- Vampire: Theorem; used direction_exhaustive, forbidden_use_def, is_owner_def, theft_forbidden
+- Leo-III (back end: E): Theorem; used direction_exhaustive, forbidden_use_def, is_owner_def, theft_forbidden

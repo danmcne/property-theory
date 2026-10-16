@@ -49,12 +49,13 @@ The forfeit applies only to the things used in the *aggressing action*, that is,
 
 ### 2.4 The direction view (LiquidZulu)
 
-LiquidZulu's argument against group ownership (course text "On the Impossibility of Group Ownership") defines ownership as direction and asserts that in a conflict between two owners, "either A is said to be the just victor, or B is". The contrast axiom `direction_exhaustive` states this premise for every conflict between two persons over a thing. Two theorems follow:
+LiquidZulu's argument against group ownership (course text "On the Impossibility of Group Ownership") defines ownership as direction and asserts that in a conflict between two owners, "either A is said to be the just victor, or B is". The contrast axiom `direction_exhaustive` states this premise as he states it, for a conflict between two owners of a thing (each holds at least one title over it). It has one effect:
 
-- `direction_overreach`: an owner who refuses two rivals with clashing wants contradicts the premise. Read generally, the premise requires every owner to admit one of any two rivals.
 - `direction_forbids_deadlock`: two co-owners who refuse each other, with clashing wants, contradict the premise.
 
-The first theorem shows that the premise cannot hold for all conflicts. Restricted to conflicts between owners, it becomes the statement that owners cannot deadlock, which is the conclusion it is meant to support. Without the premise, both situations have models (scenarios `owner_refuses_two_rivals`, `co_ownership_consistent`).
+Sole ownership is untouched: with the premise added, a sole owner may still refuse two rivals who want clashing uses (scenario `owner_refuses_two_rivals_under_direction_view`). The premise therefore removes exactly the outcome that the exclusion view adds, the deadlock in which neither co-owner may proceed without the other. It follows from defining ownership as direction (if to own is to direct, settling a dispute between owners means saying whose direction holds), so it is not independent support for that definition. Without the premise, the deadlock has models (scenario `co_ownership_consistent`).
+
+(v0.22 stated the premise for every conflict between two persons and derived that an owner could never refuse two rivals, `direction_overreach`. That reading generalized LiquidZulu's premise beyond what he asserts; v0.23 corrects it and removes the theorem.)
 
 ### 2.5 Veto co-ownership and free-use co-ownership (v0.23)
 

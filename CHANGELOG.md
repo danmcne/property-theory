@@ -11,6 +11,15 @@
 - README section "Two forms of co-ownership"; THEORY §2.5.
 
 ### Changed
+- `direction_exhaustive` now states LiquidZulu's premise as he states it: for a conflict between two
+  OWNERS of a thing. v0.22 stated it for every conflict between two persons, which generalized his
+  premise beyond what he asserts. Theorem `direction_overreach` (an owner could never refuse two
+  rivals) is removed: it refuted the over-generalized premise only. Scenario
+  `owner_refuses_two_rivals_under_direction_view` now expects a model: the premise leaves sole
+  ownership untouched. `direction_forbids_deadlock` is unchanged.
+- ARGUMENT.md §§0, 1, 3, 4, 7, 8 and the Substack essay: the "proves too much" argument is replaced
+  by the observation that the just-victor premise follows from defining ownership as direction, and
+  removes exactly the deadlock outcome; it is not independent support for that definition.
 - ARGUMENT.md §7 and the Substack essay: legal "free use" co-ownership is either a bare permission that
   settles nothing (whoever acts first wins) or a guarantee that reproduces the control view's
   contradiction. Either way the parties cannot both have free use and must go to a majority, a court or

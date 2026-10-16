@@ -42,7 +42,6 @@
   "control_no_refusal": "sat (model re-checked)",
   "defence_is_not_aggression": "sat (model re-checked)",
   "direction_forbids_deadlock": "n/a",
-  "direction_overreach": "n/a",
   "disown_extinguishes": "sat (model re-checked)",
   "easement_use": "sat (model re-checked)",
   "endless_past_paradox": "n/a",

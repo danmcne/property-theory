@@ -2,6 +2,7 @@
 
 ## v0.23 — done
 - Veto co-ownership versus free-use co-ownership: `veto_settles_conflict`, `free_use_unsettled`.
+- LiquidZulu's premise restricted to conflicts between owners, as he states it; `direction_overreach` removed.
 
 ## v0.22 — done
 

@@ -12,10 +12,10 @@ This file describes the axioms, the theorems and the models. It does not argue f
 - **Co-ownership has models.** In these models, two persons own the same field, each refuses the other every use, they want uses that clash, and nobody commits aggression. The field stays unused. This is a deadlock (`joint_deadlock`).
 - **Two opposing premises produce a contradiction with co-ownership.** The project states them as contrast axioms, which are not part of the theory:
   - The **control view**: an owner may use his property in any manner. Nobody else may use it in a way that clashes with what he wants. With these two axioms, co-owners of a scarce thing can never want clashing uses (`control_coownership_contradiction`).
-  - The **direction view**: every conflict over a thing has a winner by right. The winner's use is permitted, and the other party's use is forbidden. With this axiom, an owner can never refuse two rivals (`direction_overreach`), and co-owners can never deadlock (`direction_forbids_deadlock`).
+  - The **direction view**: a conflict between two owners of a thing has a winner by right. The winner's use is permitted, and the other owner's use is forbidden. With this axiom, co-owners can never deadlock (`direction_forbids_deadlock`). Sole ownership is not affected.
 - **Veto co-ownership settles conflicts; free use does not.** When co-owners hold titles against each other, two of their uses are both permitted only if each consents to the other's (`veto_settles_conflict`). When co-owners hold titles against outsiders only, as is usual in law, two clashing uses are both permitted and at most one can happen (`free_use_unsettled`).
 - **Control is a result of sole ownership.** A sole full owner controls his property (`sole_owner_controls`). A co-owner controls the thing only if the other co-owners consent to every use he makes (`control_needs_deference`).
-- **55 theorems** have proofs from two different provers. Each proof uses only a declared list of axioms.
+- **54 theorems** have proofs from two different provers. Each proof uses only a declared list of axioms.
 
 ## Basic terms
 
@@ -166,7 +166,7 @@ Four contrast axioms state premises of opposing views. They are not part of the 
 | `control_use_liberty` | An owner may use his property in any manner. | A co-owner can never refuse another co-owner anything (`control_no_refusal`). |
 | `control_protection` | Nobody else may use an owner's property in a way that clashes with what the owner wants. | With `control_use_liberty`: two co-owners of a scarce thing can never want clashing uses (`control_coownership_contradiction`). Sole ownership still has models. |
 | `control_protection_outsiders` | As `control_protection`, but only against persons who hold no title over the thing. | With `control_use_liberty`: co-ownership has models, and both co-owners may make clashing uses (scenario `co_ownership_with_protection_against_outsiders`). |
-| `direction_exhaustive` | Every conflict over a thing has a just victor: one party's use is permitted and the other's is forbidden. | An owner can never refuse two rivals who want clashing uses (`direction_overreach`). Co-owners can never deadlock (`direction_forbids_deadlock`). |
+| `direction_exhaustive` | A conflict between two owners of a thing has a just victor: one owner's use is permitted and the other's is forbidden. | Co-owners who refuse each other can never want clashing uses (`direction_forbids_deadlock`). A sole owner may still refuse two rivals (scenario `owner_refuses_two_rivals_under_direction_view`). |
 
 Without the contrast axioms, every one of these situations has a model (scenarios `co_ownership_consistent`, `owner_refuses_two_rivals`). Each control axiom alone is also consistent with co-ownership (scenarios `co_ownership_with_use_liberty_only`, `co_ownership_with_protection_only`).
 
@@ -223,7 +223,7 @@ The contrast axioms below are not part of the theory. They state premises of the
 | `control_use_liberty` | Control view: an owner may use his property in any manner. |
 | `control_protection` | Control view: no other person may use an owner's property in a way that clashes with what the owner wants. |
 | `control_protection_outsiders` | Weakened control view: the protection of an owner's wants runs only against persons who hold no title over the thing. |
-| `direction_exhaustive` | Direction view (LiquidZulu): every conflict over the use of a thing has a just victor, whose use is permitted while the other's is forbidden. |
+| `direction_exhaustive` | Direction view (LiquidZulu): a conflict between two owners of a thing over its use has a just victor, whose use is permitted while the other's is forbidden. |
 <!-- END GENERATED: axioms -->
 
 ## The theorems
@@ -339,8 +339,7 @@ Two provers, Vampire and Leo-III, prove each theorem below. Each proof uses only
 |---|---|---|
 | `control_no_refusal` ★ | If ownership also gave a right to use, no co-owner could ever refuse another co-owner anything: the right to exclude between co-owners would vanish. | both provers |
 | `control_coownership_contradiction` ★ | If ownership meant control (use as one wishes, protected against clashing uses by anyone), two co-owners of a scarce thing could never want a clashing use of it. Since wants are free, co-ownership would be contradictory. Under the exclusion view the same situation has a model. | both provers |
-| `direction_overreach` ★ | If every conflict had a just victor (LiquidZulu's premise), an owner could never refuse two rivals who want clashing uses of his property: one of them would have to be permitted. | both provers |
-| `direction_forbids_deadlock` ★ | Restricted to co-owners, the same premise simply forbids a deadlock between them: it assumes what the argument against co-ownership sets out to prove. | both provers |
+| `direction_forbids_deadlock` ★ | With LiquidZulu's premise, co-owners who refuse each other can never want clashing uses: the premise rules out exactly the outcome in which neither co-owner may proceed without the other. | both provers |
 <!-- END GENERATED: theorems -->
 
 ## Is there a model?
@@ -441,7 +440,7 @@ flowchart LR
 | Check | Outcome |
 |---|---|
 | Axioms and definitions | 19 axioms, 19 definitions |
-| Theorems proved by Vampire and by Leo-III (with E) | 55 of 55 |
+| Theorems proved by Vampire and by Leo-III (with E) | 54 of 54 |
 | Axioms marked derived, proved from the axioms they name | 2 of 2 |
 | Story world satisfies every axiom and definition | yes (38 of 38) |
 | Titles and wrongs in the story world are fixed by its history | yes |

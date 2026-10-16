@@ -20,13 +20,11 @@ So the argument is valid — for exclusive control. The question is whether that
 
 Return to the stick, and read ownership as the right to exclude. A and B each hold a claim against the other. A wants to use it one way, B another, and each refuses the other. What follows? A may not use it, because B forbids it; B may not use it, because A forbids it. Neither is the "just victor." The stick waits until they agree.
 
-That outcome violates no one's rights. A's claim is honored, since B does not use the stick; B's claim is honored, since A does not. The argument offered two possible verdicts — A wins, or B wins — and the right to exclude supplies a third: neither, without the other. The premise that every conflict must have a just victor was doing all the work.
+That outcome violates no one's rights. A's claim is honored, since B does not use the stick; B's claim is honored, since A does not. The argument offered two possible verdicts — A wins, or B wins — and the right to exclude supplies a third: neither, without the other. The premise that a conflict between owners must have a just victor was doing all the work.
 
-## The premise proves too much
+## Where the premise comes from
 
-That premise has a worse problem. Taken as stated, it is about every conflict between two people over a thing — and it then destroys sole ownership too. Suppose Ada alone owns a field. Ben wants to plow it, Cy wants to sow it, the two uses clash, and Ada refuses both. If every conflict must have a just victor, one of Ben and Cy must be permitted, and Ada's refusal has to give way. No libertarian believes that.
-
-So the premise has to be restricted to conflicts between owners. But restricted that way, it simply says that co-owners can never be at an impasse — which is the conclusion it was supposed to prove.
+The just-victor premise is not an independent fact about conflicts. It comes from the definition. If owning is directing, then settling a dispute between owners means saying whose direction holds, and the only answers are A's and B's. If owning is excluding, settling it means saying what each may not do, and "neither of you, without the other" is a complete answer. So the stick argument shows that two people cannot each have exclusive direction of one thing, which is true, and nothing more.
 
 ## "But whoever wins is the real owner"
 
@@ -48,8 +46,8 @@ The law's usual alternative is worse. Most legal systems give each co-owner free
 
 ## What the formal check shows
 
-I did not want to rest this on prose alone, so I wrote the theory down as axioms in formal logic — homesteading, transfer by accepted grant, leases, easements, abandonment, aggression and defence — and had two independent automated provers check the theorems and three independent methods look for models. The theory is consistent, and it has models in which two co-owners disagree, refuse each other, and nobody wrongs anyone. Add exclusive control, as two extra axioms, and co-ownership of a scarce thing becomes contradictory. Add the "just victor" premise instead, and a sole owner can no longer refuse two rivals. The details, the proofs and a longer version of this argument are in the repository.
+I did not want to rest this on prose alone, so I wrote the theory down as axioms in formal logic — homesteading, transfer by accepted grant, leases, easements, abandonment, aggression and defence — and had two independent automated provers check the theorems and three independent methods look for models. The theory is consistent, and it has models in which two co-owners disagree, refuse each other, and nobody wrongs anyone. Add exclusive control, as two extra axioms, and co-ownership of a scarce thing becomes contradictory. Add the "just victor" premise instead, and sole ownership is unaffected; the only thing the premise removes is the deadlock between co-owners. The details, the proofs and a longer version of this argument are in the repository.
 
-None of this proves that the right to exclude is the correct idea of ownership; that is an argument, and you may reject it. But if you reject it, you need an idea of ownership under which an owner's refusal can be overruled by two strangers who want his field — or a premise that assumes co-ownership is impossible in order to show that it is.
+None of this proves that the right to exclude is the correct idea of ownership; that is an argument, and you may reject it. But if you reject it, you need some reason to think ownership must be direction rather than exclusion, and the stick argument does not give one: it assumes it.
 
 An owner is someone who may exclude others. Two people can each be that, with respect to one thing, at the same time. When they disagree, the thing waits.

@@ -209,27 +209,14 @@
   "leo3_used": [
    "direction_exhaustive",
    "forbidden_use_def",
+   "is_owner_def",
    "theft_forbidden"
   ],
   "vampire": "Theorem",
   "vampire_used": [
    "direction_exhaustive",
    "forbidden_use_def",
-   "theft_forbidden"
-  ]
- },
- "direction_overreach": {
-  "leo3": "Theorem",
-  "leo3_backend": "E",
-  "leo3_used": [
-   "direction_exhaustive",
-   "forbidden_use_def",
-   "theft_forbidden"
-  ],
-  "vampire": "Theorem",
-  "vampire_used": [
-   "direction_exhaustive",
-   "forbidden_use_def",
+   "is_owner_def",
    "theft_forbidden"
   ]
  },

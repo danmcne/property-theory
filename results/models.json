@@ -222,10 +222,13 @@
    "result": "sat"
   },
   "owner_refuses_two_rivals_under_direction_view": {
-   "expect": "unsat",
-   "forced": {},
+   "expect": "sat",
+   "forced": {
+    "forbidden_use(ben,field,plow,t1)": true,
+    "forbidden_use(cy,field,sow,t1)": true
+   },
    "ok": true,
-   "result": "unsat"
+   "result": "sat"
   },
   "partial_abandonment": {
    "expect": "sat",
@@ -281,5 +284,5 @@
    "result": "sat"
   }
  },
- "seconds": 45.7
+ "seconds": 43.3
 }

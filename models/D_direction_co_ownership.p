@@ -112,7 +112,7 @@ tff(unrealised_def, axiom,
     ![P:en,O:en,M:man,T:tm]: (unrealised(P,O,M,T) <=> (wants(P,O,M,T) & ~ use(P,O,M,T)))).
 % CONTRAST
 tff(direction_exhaustive, axiom,
-    ![A:en,B:en,O:en,M1:man,M2:man,T:tm]: ((person(A) & person(B) & (A != B) & wants(A,O,M1,T) & wants(B,O,M2,T) & clash(O,M1,M2)) => ((may_use(A,O,M1,T) & forbidden_use(B,O,M2,T)) | (may_use(B,O,M2,T) & forbidden_use(A,O,M1,T))))).
+    ![A:en,B:en,O:en,M1:man,M2:man,T:tm]: ((person(A) & person(B) & (A != B) & is_owner(A,O,T) & is_owner(B,O,T) & wants(A,O,M1,T) & wants(B,O,M2,T) & clash(O,M1,M2)) => ((may_use(A,O,M1,T) & forbidden_use(B,O,M2,T)) | (may_use(B,O,M2,T) & forbidden_use(A,O,M1,T))))).
 tff(extra_0, axiom,
     (plow != sow)).
 tff(extra_1, axiom,
